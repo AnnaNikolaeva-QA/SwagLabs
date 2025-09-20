@@ -27,6 +27,4 @@ public class BaseTest {
     public void close() {
         browser.quit();
     }
-
-
 }

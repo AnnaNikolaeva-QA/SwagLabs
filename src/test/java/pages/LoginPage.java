@@ -4,15 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
-    WebDriver browser;
+    private WebDriver browser;
+    private static final By USERNAME_INPUT = By.xpath("//*[@placeholder='Username']");
+    private static final By PASSWORD_INPUT = By.xpath("//*[@placeholder='Password']");
+    private static final By LOGIN_BTN = By.xpath("//*[@id='login-button']");
 
     public LoginPage(WebDriver browser) {
         this.browser = browser;
     }
-
-    private static final By USERNAME_INPUT = By.xpath("//*[@placeholder='Username']");
-    private static final By PASSWORD_INPUT = By.xpath("//*[@placeholder='Password']");
-    private static final By LOGIN_BTN = By.xpath("//*[@id='login-button']");
 
     public void open() {
         browser.get("https://www.saucedemo.com/");
