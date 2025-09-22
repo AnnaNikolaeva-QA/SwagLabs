@@ -22,5 +22,4 @@ public class LoginPage {
         browser.findElement(PASSWORD_INPUT).sendKeys(password);
         browser.findElement(LOGIN_BTN).click();
     }
-
 }

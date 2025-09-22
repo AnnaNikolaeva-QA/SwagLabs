@@ -19,5 +19,4 @@ public class LoginTest extends BaseTest {
         loginPage.inputLoginPassword("locked_out_user", "secret_sauce");
         assertTrue(browser.findElement(By.xpath("//*[@data-test='error']")).isDisplayed());
     }
-
 }
