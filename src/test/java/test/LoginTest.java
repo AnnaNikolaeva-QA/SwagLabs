@@ -22,14 +22,14 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void checkWihOutUserNameLogin() {
+    public void checkWithOutUserNameLogin() {
         loginPage.open();
         loginPage.inputLoginPassword("", "secret_sauce");
         assertTrue(driver.findElement(By.xpath("//*[@data-test='error']")).isDisplayed());
     }
 
     @Test
-    public void checkWihOutPasswordLogin() {
+    public void checkWithOutPasswordLogin() {
         loginPage.open();
         loginPage.inputLoginPassword("locked_out_user", "");
         assertTrue(driver.findElement(By.xpath("//*[@data-test='error']")).isDisplayed());
