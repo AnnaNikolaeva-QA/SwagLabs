@@ -1,6 +1,6 @@
 package test;
 
-import org.openqa.selenium.By;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
@@ -11,27 +11,21 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.inputLoginPassword("standard_user", "secret_sauce");
         assertTrue(productPage.isTitlePresent());
-        productPage.addToCart("sauce-labs-backpack");
     }
 
-    @Test
-    public void checkLockedOutUserLogin() {
-        loginPage.open();
-        loginPage.inputLoginPassword("locked_out_user", "secret_sauce");
-        assertTrue(driver.findElement(By.xpath("//*[@data-test='error']")).isDisplayed());
+    @DataProvider()
+    public Object[][] incorrectLoginData() {
+        return new Object[][]{
+                {"locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out."},
+                {"", "secret_sauce", "Epic sadface: Username is required"},
+                {"standard_user", "", "Epic sadface: Password is required"}
+        };
     }
 
-    @Test
-    public void checkWithOutUserNameLogin() {
+    @Test(dataProvider = "incorrectLoginData")
+    public void checkIncorrectLogin(String login, String password, String errorMsg) {
         loginPage.open();
-        loginPage.inputLoginPassword("", "secret_sauce");
-        assertTrue(driver.findElement(By.xpath("//*[@data-test='error']")).isDisplayed());
-    }
-
-    @Test
-    public void checkWithOutPasswordLogin() {
-        loginPage.open();
-        loginPage.inputLoginPassword("locked_out_user", "");
-        assertTrue(driver.findElement(By.xpath("//*[@data-test='error']")).isDisplayed());
+        loginPage.inputLoginPassword(login, password);
+        loginPage.checkErrorMsg(errorMsg);
     }
 }
