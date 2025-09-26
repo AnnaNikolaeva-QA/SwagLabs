@@ -12,10 +12,10 @@ import pages.ProductPage;
 import java.time.Duration;
 
 public class BaseTest {
-    WebDriver driver;
-    LoginPage loginPage;
+    public WebDriver driver;
+    protected LoginPage loginPage;
     protected ProductPage productPage;
-    CartPage cartPage;
+    protected CartPage cartPage;
 
     @BeforeMethod
     public void setUp() {
