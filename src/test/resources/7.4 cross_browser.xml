@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SwagLabs" parallel="classes" thread-count="2">
+    <test name="Chrome" parallel="tests" thread-count="2">
+        <classes>
+            <class name="test.LoginTest"/>
+            <class name="test.AddGoodsToCartTest"/>
+            <parameter name="browser" value="chrome"></parameter>
+        </classes>
+    </test>
+    <test name="Edge" parallel="tests" thread-count="2">
+        <classes>
+            <class name="test.LoginTest"/>
+            <class name="test.AddGoodsToCartTest"/>
+            <parameter name="browser" value="edge"></parameter>
+        </classes>
+    </test>
+</suite>

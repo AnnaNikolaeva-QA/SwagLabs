@@ -23,7 +23,7 @@ public class LoginPage extends BasePage {
         driver.get(BASE_URL + endPoint);
     }
 
-    public void inputLoginPassword(String login, String password) {
+    public void inputLoginPassword(String login, String password) { // сюда добавить пользователя вов ходные User user
         driver.findElement(USERNAME_INPUT).sendKeys(login);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BTN).click();

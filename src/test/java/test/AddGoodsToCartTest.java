@@ -8,7 +8,7 @@ public class AddGoodsToCartTest extends BaseTest {
     @Test
     public void addToCartItems() {
         loginPage.open();
-        loginPage.inputLoginPassword("standard_user", "secret_sauce");
+        loginPage.inputLoginPassword(login, password);
         productPage.addToCart("sauce-labs-backpack");
         productPage.addToCart(3);
         productPage.checkGoodsCount("2");
@@ -19,7 +19,7 @@ public class AddGoodsToCartTest extends BaseTest {
     @Test
     public void checkAddToCartItemsAfterLesson() {
         loginPage.open();
-        loginPage.inputLoginPassword("standard_user", "secret_sauce");
+        loginPage.inputLoginPassword(login, password);
         productPage.addToCart("sauce-labs-backpack");
         productPage.addToCart(3);
         productPage.checkGoodsCount("2");
