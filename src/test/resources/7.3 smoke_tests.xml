@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" name="SwagLabs" parallel="classes">
+<!--    <test name="All tests">-->
+<!--        <classes>-->
+<!--            <class name="test.LoginTest"/>-->
+<!--            <class name="test.AddGoodsToCartTest"/>-->
+<!--        </classes>-->
+<!--    </test> &lt;!&ndash; Test &ndash;&gt;-->
+    <test name="Thread #1">
+        <classes>
+            <class name="test.LoginTest"/>
+        </classes>
+    </test>
+    <test name="Thread #2">
+        <classes>
+            <class name="test.AddGoodsToCartTest"/>
+        </classes>
+    </test>
+</suite>
