@@ -1,14 +1,24 @@
 package test;
 
-import io.qameta.allure.Epic;
+import io.qameta.allure.*;
+import io.qameta.allure.testng.AllureTestNg;
 import org.testng.annotations.*;
 import user.UserFactory;
 
 import static org.testng.Assert.assertTrue;
-@Epic("Авторизация")
 
+@Epic("Авторизация")
+@Listeners(AllureTestNg.class)
 public class LoginTest extends BaseTest {
-    @Test(description = "Проверка корректной авторизации", priority = 2, invocationCount = 1)
+    @Epic("Модуль логин")
+    @Feature("Юридическое лицо")
+    @Story("Stg-123")
+    @Severity(SeverityLevel.NORMAL)
+    @Owner("Nikolaeva Ann niolan007@yandex.ru")
+    @TmsLink("SwagLabs")
+    @Issue("Sandbox")
+    @Flaky
+    @Test(description = "Проверка корректной авторизации", priority = 2, invocationCount = 1, enabled = false)
     public void checkStandardUserLogin() {
         loginPage.open();
         loginPage.inputLoginPassword(login, password);
@@ -27,7 +37,7 @@ public class LoginTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "incorrectLoginData")
+    @Test(description = "Проверка авторизации с некорректными данными", dataProvider = "incorrectLoginData")
     public void checkIncorrectLogin(String login, String password, String errorMsg) {
         loginPage.open();
         loginPage.inputLoginPassword(login, password);

@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class AddGoodsToCartTest extends BaseTest {
-    @Test
+    @Test(description = "Проверка счётчика добавления товаров в корзину")
     public void addToCartItems() {
         loginPage.open();
         loginPage.inputLoginPassword(login, password);
@@ -16,7 +16,7 @@ public class AddGoodsToCartTest extends BaseTest {
         cartPage.checkGoodsCountInCart(2);
     }
 
-    @Test
+    @Test(description = "Проверка товаров в корзине")
     public void checkAddToCartItemsAfterLesson() {
         loginPage.open();
         loginPage.inputLoginPassword(login, password);
