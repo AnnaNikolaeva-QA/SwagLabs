@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,23 +18,28 @@ public class ProductPage extends BasePage {
         super(driver);
     }
 
+    @Step("Получение названия")
     public String getTitle() {
         return driver.findElement(title).getText();
     }
 
+    @Step("Проверка отображения названия 'Products'")
     public boolean isTitlePresent() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(titleProducts)).isDisplayed();
     }
 
+    @Step("Добавление твоара в корзину по названию")
     public void addToCart(String goodsName) {
         By addToCart = By.xpath(ADD_TO_CART_BTN_PATTERN.formatted(goodsName));
         driver.findElement(addToCart).click();
     }
 
+    @Step("Добавление твоара в корзину по индексу")
     public void addToCart(int goodsIndex) {
         driver.findElements(ALL_ADD_TO_CART_BTN).get(goodsIndex).click();
     }
 
+    @Step("Проверка количества товаров в корзине (счётчик на значке корзина")
     public void checkGoodsCount(String expectedCount) {
         assertEquals(driver.findElement(ITEMS_COUNT_ON_BASKET).getText(), expectedCount);
     }
