@@ -5,6 +5,8 @@ import io.qameta.allure.testng.AllureTestNg;
 import org.testng.annotations.*;
 import user.UserFactory;
 
+import static enums.DepartmentNaming.*;
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 @Epic("Авторизация")
@@ -23,6 +25,7 @@ public class LoginTest extends BaseTest {
         loginPage.open();
         loginPage.inputLoginPassword(login, password);
         assertTrue(productPage.isTitlePresent());
+        assertEquals(productPage.getTitle(), PRODUCTS.getDisplayName());
     }
 
     @DataProvider()
